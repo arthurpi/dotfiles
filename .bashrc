@@ -11,6 +11,7 @@ case $- in
       *) return;;
 esac
 
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -81,6 +82,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     alias l='ls -l'
     alias la='ls -la'
+    alias tmux='tmux -2 at'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -88,6 +90,8 @@ if [ -x /usr/bin/dircolors ]; then
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
+
+#export PATH="$PATH:~/bin"
 
 # some more ls aliases
 #alias ll='ls -l'
@@ -113,3 +117,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export editor=vim
