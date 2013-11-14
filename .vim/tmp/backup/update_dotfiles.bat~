@@ -1,0 +1,8 @@
+@ECHO OFF
+SET src=C:\Users\Arthur
+SET dst=%src%\Documents\GitHub\dotfiles
+@ECHO ON
+COPY %src%\.vimrc %dst%\
+COPY %src%\.gvimrc %dst%\
+ROBOCOPY %src%\vimfiles\ %dst%\.vim\ /E
+pause
