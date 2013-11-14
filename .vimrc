@@ -15,6 +15,9 @@ set encoding=utf-8			"character encoding.
 set list				"display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.	"symbol to display
 set number				"display line number
+set hlsearch				"highligh search result
+set cursorline		
+set cursorcolumn
 set showcmd				"display info
 set showmatch				"highlight braces
 set novisualbell			"disable annoying screen flashes
@@ -33,12 +36,17 @@ set wildignore+=.git,.svn,.hg
 set wildignore+=.exe,.o,.out,.so,.a
 
 "shortcuts
+let mapleader = " "
+nnoremap <Leader>l	:set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>n	:set number!<CR>
 nnoremap <C-k>	{
 nnoremap <C-j>	}
 vnoremap <C-k>	{
 vnoremap <C-j>	}
 nnoremap H	:tabprev<CR>
 nnoremap L	:tabnext<CR>
+vnoremap H	:tabprev<CR>
+vnoremap L	:tabnext<CR>
 vnoremap <	<gv
 vnoremap >	>gv
 

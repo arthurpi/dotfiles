@@ -11,6 +11,7 @@ set go-=l			"remove left-hand scroll bar
 set go-=L			"remove left-hand scroll bar
 set go-=b			"remove bottom scroll bar
 
+set novisualbell			"disable annoying screen flashes
 set vb t_vb=			"disable annoying bell
 
 "fonts
