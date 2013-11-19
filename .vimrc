@@ -5,6 +5,8 @@
 set nocompatible
 filetype off
 
+"plugins
+
 "colors
 colorscheme jellybeans
 
@@ -15,11 +17,9 @@ set encoding=utf-8			"character encoding.
 set list				"display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.	"symbol to display
 set number				"display line number
-set hlsearch				"highligh search result
-set cursorline		
-set cursorcolumn
-set showcmd				"display info
-set showmatch				"highlight braces
+set cursorline				"highlight current line
+set cursorcolumn			"highlight current column
+set showcmd				"display cmd info
 set novisualbell			"disable annoying screen flashes
 set vb t_vb=				"disable annoying bell
 set backspace=indent,eol,start		"allow backspace everywhere
@@ -28,6 +28,12 @@ set backspace=indent,eol,start		"allow backspace everywhere
 set autoindent				"keep indentation from the line above
 set smartindent				"extend indentation when needed
 set shiftwidth=2			"2 spaces indentation
+
+"search
+set hlsearch				"highligh search result
+set incsearch				"browser-like searches
+set magic				"for regexp
+set showmatch				"highlight braces
 
 "auto completion menu
 set wildmenu
@@ -39,16 +45,31 @@ set wildignore+=.exe,.o,.out,.so,.a
 let mapleader = " "
 nnoremap <Leader>l	:set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>n	:set number!<CR>
-nnoremap <C-k>	{
-nnoremap <C-j>	}
-vnoremap <C-k>	{
-vnoremap <C-j>	}
-nnoremap H	:tabprev<CR>
-nnoremap L	:tabnext<CR>
-vnoremap H	:tabprev<CR>
-vnoremap L	:tabnext<CR>
-vnoremap <	<gv
-vnoremap >	>gv
+nnoremap <Leader><CR>	i<CR><ESC>
+nnoremap <C-k>		{
+nnoremap <C-j>		}
+vnoremap <C-k>		{
+vnoremap <C-j>		}
+nnoremap H		:tabprev<CR>
+nnoremap L		:tabnext<CR>
+vnoremap H		:tabprev<CR>
+vnoremap L		:tabnext<CR>
+vnoremap <		<gv
+vnoremap >		>gv
+
+"disable arrowkey
+nnoremap <Up>		<NOP>
+inoremap <Up>		<NOP>
+vnoremap <Up>		<NOP>
+nnoremap <Down>		<NOP>
+inoremap <Down>		<NOP>
+vnoremap <Down>		<NOP>
+nnoremap <Left>		<NOP>
+inoremap <Left>		<NOP>
+vnoremap <Left>		<NOP>
+nnoremap <Right>	<NOP>
+inoremap <Right>	<NOP>
+vnoremap <Right>	<NOP>
 
 "history & backup directories
 set viminfo=""				"disable viminfo file
