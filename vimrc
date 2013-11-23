@@ -5,7 +5,14 @@
 set nocompatible
 filetype off
 
+"init Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
 "plugins
+Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/vim-easymotion'
 
 "colors
 colorscheme jellybeans
@@ -23,6 +30,7 @@ set showcmd				"display cmd info
 set novisualbell			"disable annoying screen flashes
 set vb t_vb=				"disable annoying bell
 set backspace=indent,eol,start		"allow backspace everywhere
+set laststatus=2			"always display bottom status bar
 
 "indentation
 set autoindent				"keep indentation from the line above
