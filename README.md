@@ -8,7 +8,8 @@ ln -s ~/.dotfiles/vimrc ~/.vimrc<br />
 ln -s ~/.dotfiles/gvimrc ~/.gvimrc<br />
 ln -s ~/.dotfiles/vim ~/.vim<br />
 ln -s ~/.dotfiles/conkyrc ~/.conkyrc<br />
-ln -s ~/.dotfiles/config ~/.config    (it will install openbox & tint2 configuration files)<br />
+ln -s ~/.dotfiles/config/openbox ~/.config/openbox<br />
+ln -s ~/.dotfiles/config/tint2 ~/.config/tint2<br />
 ln -s ~/.dotfiles/inputrc ~/.inputrc<br /><br />
 
 Credits:
