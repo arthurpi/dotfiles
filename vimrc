@@ -50,11 +50,13 @@ set wildignore+=.git,.svn,.hg
 set wildignore+=.exe,.o,.out,.so,.a
 
 "shortcuts
-let mapleader = " "
+let mapleader = ","
 nnoremap <Leader>l	:set cursorline!<CR>
 nnoremap <Leader>n	:set number!<CR>
-nnoremap <C-p>		:Vexplore<CR>
+nnoremap <Leader>s	:let @/ = ""<CR>
 nnoremap <Leader><CR>	i<CR><ESC>
+nnoremap <C-p>		:Vexplore<CR>
+nnoremap <C-t>		:Texplore<CR>
 nnoremap <C-k>		{
 nnoremap <C-j>		}
 vnoremap <C-k>		{
@@ -65,6 +67,8 @@ vnoremap H		:tabprev<CR>
 vnoremap L		:tabnext<CR>
 vnoremap <		<gv
 vnoremap >		>gv
+
+let g:EasyMotion_leader_key = ","
 
 "disable arrowkey
 nnoremap <Up>		<NOP>
