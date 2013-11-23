@@ -14,11 +14,11 @@ colorscheme jellybeans
 filetype plugin indent on
 syntax on
 set encoding=utf-8			"character encoding.
+set t_Co=256				"enable 256bits color
 set list				"display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.	"symbol to display
 set number				"display line number
 set cursorline				"highlight current line
-set cursorcolumn			"highlight current column
 set showcmd				"display cmd info
 set novisualbell			"disable annoying screen flashes
 set vb t_vb=				"disable annoying bell
@@ -43,8 +43,9 @@ set wildignore+=.exe,.o,.out,.so,.a
 
 "shortcuts
 let mapleader = " "
-nnoremap <Leader>l	:set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>l	:set cursorline!<CR>
 nnoremap <Leader>n	:set number!<CR>
+nnoremap <C-p>		:Vexplore<CR>
 nnoremap <Leader><CR>	i<CR><ESC>
 nnoremap <C-k>		{
 nnoremap <C-j>		}
@@ -70,6 +71,8 @@ vnoremap <Left>		<NOP>
 nnoremap <Right>	<NOP>
 inoremap <Right>	<NOP>
 vnoremap <Right>	<NOP>
+
+let g:netrw_liststyle=3
 
 "history & backup directories
 set viminfo=""				"disable viminfo file
