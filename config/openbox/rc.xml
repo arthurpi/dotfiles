@@ -1014,6 +1014,9 @@
 
   # end of the example
 -->
+    <application name ="google-sandbox">
+      <decor>no</decor>
+    </application>
     <application name ="terminator">
       <decor>no</decor>
     </application>

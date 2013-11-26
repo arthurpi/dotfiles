@@ -12,7 +12,7 @@ draw_borders no
 border_margin 3
 
 #shades
-draw_shades no
+draw_shades yes
 
 #position
 gap_x 0
@@ -36,7 +36,7 @@ override_utf8_locale yes
 
 #to prevent window from moving
 use_spacer none
-minimum_size 1600 0
+minimum_size 1400 0
 
 #mpd
 #mpd_host localhost
