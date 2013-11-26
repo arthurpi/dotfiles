@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/'
-let g:netrw_dirhist_2='/home/qrthur/documents/epitech/teck3s/tps/c++/boost_asio'
-let g:netrw_dirhist_3='/home/qrthur'
-let g:netrw_dirhist_4='/home/qrthur/documents/django/my_proj/my_proj'
