@@ -1,4 +1,3 @@
-# Because mouse are for the weak
 # Vimlike shortcuts
 "\ej":history-search-forward
 "\ek":history-search-backward
@@ -12,8 +11,8 @@
 "\em":"make re\C-m"
 "\es":"\C-asudo \C-m"
 
-# Insensitive case because we dont feel anything
+# Insensitive case
 set completion-ignore-case on
 
-# Fuck twice key
+# disable twice key
 set show-all-if-ambiguous on 
