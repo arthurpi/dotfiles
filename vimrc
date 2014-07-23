@@ -6,13 +6,15 @@ set nocompatible
 filetype off
 
 "init Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/vundle'
 
 "plugins
-Bundle 'bling/vim-airline'
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-easymotion'
+
+call vundle#end()
 
 "colors
 colorscheme jellybeans
@@ -22,8 +24,8 @@ filetype plugin indent on
 syntax on
 set encoding=utf-8                      "character encoding.
 set t_Co=256                            "enable 256bits color
-set list                                "display invisible char
-set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
+"set list                                "display invisible char
+"set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
 set number                              "display line number
 set cursorline                          "highlight current line
 set showcmd                             "display cmd info
