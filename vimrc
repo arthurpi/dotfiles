@@ -22,8 +22,8 @@ filetype plugin indent on
 syntax on
 set encoding=utf-8                      "character encoding.
 set t_Co=256                            "enable 256bits color
-set list                                "display invisible char
-set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
+"set list                               "display invisible char
+"set listchars=eol:¬,tab:▸\ ,trail:.    "symbol to display
 set number                              "display line number
 set cursorline                          "highlight current line
 set showcmd                             "display cmd info
@@ -72,6 +72,8 @@ vnoremap H              :tabprev<CR>
 vnoremap L              :tabnext<CR>
 vnoremap <              <gv
 vnoremap >              >gv
+nnoremap ;              :
+vnoremap ;              :
 
 let g:EasyMotion_leader_key = ","
 
@@ -90,6 +92,8 @@ inoremap <Right>    <NOP>
 vnoremap <Right>    <NOP>
 
 let g:netrw_liststyle=3
+
+let g:syntastic_c_include_dirs = ['/usr/local/include/']
 
 "history & backup directories
 set viminfo=""      "disable viminfo file
