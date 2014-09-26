@@ -1,12 +1,10 @@
-myinvokeman() {
-  man $1 | less
-}
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-alias ls="ls -hG"
+alias ls="ls -hG --color=auto"
 alias l="ls -l"
 alias la="ls -la"
 alias vi="vim"
-alias man=myinvokeman
 
 set -o vi
 
