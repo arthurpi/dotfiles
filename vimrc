@@ -13,6 +13,10 @@ Plugin 'gmarik/vundle'
 "plugins
 Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'tomtom/tcomment_vim'
+
 
 call vundle#end()
 
@@ -22,10 +26,13 @@ colorscheme jellybeans
 "general options
 filetype plugin indent on
 syntax on
+
 set encoding=utf-8                      "character encoding.
 set t_Co=256                            "enable 256bits color
-"set list                                "display invisible char
-"set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
+set list                                "display invisible char
+set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
+hi SpecialKey ctermbg=233 guifg=#649A9A "invisible char color
+
 set number                              "display line number
 set cursorline                          "highlight current line
 set showcmd                             "display cmd info
@@ -34,6 +41,11 @@ set novisualbell                        "disable annoying screen flashes
 set vb t_vb=                            "disable annoying bell
 set backspace=indent,eol,start          "allow backspace everywhere
 set laststatus=2                        "always display bottom status bar
+
+
+let &colorcolumn=join(range(81,999), ",") "color 80th column
+let &colorcolumn="80,".join(range(120,999),",") "color 120+ columns
+highlight ColorColumn ctermbg=234 guibg=#2c2d27
 
 "indentationa & tabs
 set autoindent                          "keep indentation from the line above
@@ -61,9 +73,13 @@ nnoremap <Leader>l      :set cursorline!<CR>
 nnoremap <Leader>n      :set number!<CR>
 nnoremap <Leader>s      :let @/ = ""<CR>
 nnoremap <Leader>a      ggVG
+nnoremap <Leader>,      :vertical resize -20<CR>
+nnoremap <Leader>.      :vertical resize +20<CR>
 nnoremap <Leader><CR>   i<CR><ESC>
-nnoremap <C-p>          :Vexplore<CR>
-nnoremap <C-t>          :Texplore<CR>
+nnoremap <Leader>Ctrl-p :CtrlPTag<CR>
+map <Leader>c           <C-_><C-_>
+nnoremap <F8>           :TagbarToggle<CR>
+cnoremap w!! w !sudo tee % >/dev/null
 nnoremap <C-k>          {
 nnoremap <C-j>          }
 vnoremap <C-k>          {
@@ -93,9 +109,6 @@ nnoremap <Right>    <NOP>
 inoremap <Right>    <NOP>
 vnoremap <Right>    <NOP>
 
-let g:netrw_liststyle=3
-
-let g:syntastic_c_include_dirs = ['/usr/local/include/']
 
 "history & backup directories
 set viminfo=""      "disable viminfo file
