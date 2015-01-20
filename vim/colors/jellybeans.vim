@@ -344,6 +344,16 @@ call s:X("Function","fad07a","","","Yellow","")
 call s:X("Statement","8197bf","","","DarkBlue","")
 call s:X("PreProc","8fbfdc","","","LightBlue","")
 
+
+" qrthur custom types
+"call s:X("qOSType","cd85fe","","","Magenta","")
+"call s:X("qOSType","dd75dd","","","Magenta","")
+call s:X("qOSType","ffe172","","","Magenta","")
+"call s:X("qOSType","fff975","","","Magenta","")
+"call s:X("qOSType","c28059","","","Magenta","")
+
+call s:X("qOSScope","888888","","","Magenta","")
+
 hi! link Operator Normal
 
 call s:X("Type","ffb964","","","Yellow","")
