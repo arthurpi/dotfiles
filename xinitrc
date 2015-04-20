@@ -7,7 +7,7 @@ xset -b
 xmodmap .xmodmaprc
 setxkbmap -option caps:escape
 
-export LANG=en_US.UTF-8
+export LANG="en_US.UTF-8"
 
 #us altgr-intl layout
 setxkbmap us -variant altgr-intl
