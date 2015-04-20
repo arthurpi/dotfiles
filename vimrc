@@ -19,6 +19,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-dispatch'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 
