@@ -16,8 +16,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-dispatch'
 Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/syntastic'
 Plugin 'wting/rust.vim'
 
@@ -33,7 +33,7 @@ syntax on
 set encoding=utf-8                      "character encoding.
 set t_Co=256                            "enable 256bits color
 set list                                "display invisible char
-set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
+set listchars=eol:¬,tab:→\ ,trail:.     "symbol to display
 hi SpecialKey ctermbg=233 guifg=#649A9A "invisible char color
 
 set number                              "display line number
@@ -44,6 +44,7 @@ set novisualbell                        "disable annoying screen flashes
 set vb t_vb=                            "disable annoying bell
 set backspace=indent,eol,start          "allow backspace everywhere
 set laststatus=2                        "always display bottom status bar
+set fdm=indent                          "folding method
 
 let &colorcolumn=join(range(81,999), ",") "color 80th column
 let &colorcolumn="80,".join(range(120,999),",") "color 120+ columns
@@ -164,7 +165,7 @@ augroup omnisharp_commands
 
     autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
     " automatic syntax check on events (TextChanged requires Vim 7.4)
-    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+    " autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
     autocmd BufWritePost *.cs call OmniSharp#AddToProject()
 
