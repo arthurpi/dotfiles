@@ -1,15 +1,10 @@
-# Vimlike shortcuts
-#"\ej":history-search-forward
-#"\ek":history-search-backward
-#"\eb":backward-word
-#"\ew":forward-word
-#"\eh":backward-char
-#"\el":forward-char
-#"\ex":delete-char
-#"\ea":beginning-of-line
-#"\ee":end-of-line
-"\em":"make re\C-m"
-"\es":"\C-asudo \C-m"
+set bell-style none
+
+$if mode=vi
+    set keymap vi-insert
+    "jj": vi-movement-mode
+    "kk": vi-movement-mode
+$endif
 
 # Insensitive case
 set completion-ignore-case on
