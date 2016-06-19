@@ -3,3 +3,4 @@
 --exclude=.git
 --exclude=.svn
 --exclude=.hg
+-f .tags
