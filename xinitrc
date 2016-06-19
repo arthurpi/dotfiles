@@ -11,6 +11,7 @@ export LANG="en_US.UTF-8"
 
 #us altgr-intl layout
 setxkbmap us -variant altgr-intl
+setxkbmap -option caps:ctrl_modifier
 
 #uptime/date on dwm statusbar
 while true; do
