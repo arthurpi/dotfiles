@@ -1,7 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*";
+static const char *fonts[] = {
+	"terminus:size=10"
+};
+static const char dmenufont[]       = "terminus:size=10";
 static const char normbordercolor[] = "#222222";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -10,23 +13,26 @@ static const char selbgcolor[]      = "#555555";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const Bool showbar           = True;     /* False means no bar */
-static const Bool topbar            = True;     /* False means bottom bar */
+static const int showbar            = 1;        /* 0 means no bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* tagging */
-static const char *tags[] = {"www", "irc", "dev", "pdf", "bin"};
+static const char *tags[] = {"www", "irc", "dev", "doc", "bin"};
 
 static const Rule rules[] = {
+	/* xprop(1):
+	 *	WM_CLASS(STRING) = instance, class
+	 *	WM_NAME(STRING) = title
+	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
-	{ "Chromium",  NULL,       NULL,       1 << 0,       False,       -1 },
-	{ "Friends",  NULL,       NULL,       2 << 0,       False,       -1 },
+	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Chromium", NULL,       NULL,       1 << 0,       0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster      = 1;    /* number of clients in master area */
-static const Bool resizehints = True; /* True means respect size hints in tiled resizals */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster     = 1;    /* number of clients in master area */
+static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -38,27 +44,19 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY,                       KEY,      toggleview,       {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,           KEY,      view,             {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      tag,              {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,        {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "/home/qrthur/scripts/dmenu_run_recent.sh", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *lockcmd[] = { "slock", NULL };
-
-// static const int move_down[] = {0, 25, 0, 0};
-// static const int move_up[] = {0, -25, 0, 0};
-// static const int move_right[] = {25, 0, 0, 0};
-// static const int move_left[] = {-25, 0, 0, 0};
-// static const int resize_down[] = {0, 0, 0, 25};
-// static const int resize_up[] = {0, 0, 0, -25};
-// static const int resize_right[] = {0, 0, 25, 0};
-// static const int resize_left[] = {0, 0, -25, 0};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,15 +97,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_w,                      3)
 	TAGKEYS(                        XK_e,                      4)
 	{ MODKEY|ShiftMask,             XK_g,      quit,           {0} },
-
-    /*
-     * Shortcuts to resize floating windows
-     */
-    // { MODKEY,                       XK_Down,    moveresize, {.v = move_down } },
-    // { MODKEY,                       XK_Up,      moveresize, {.v = move_up } },
-    // { MODKEY,                       XK_Right,   moveresize, {.v = 1 } },
-    // { MODKEY,                       XK_Left,    moveresize, {.v = 0 } },
-    /* resize floating windows */
 };
 
 /* button definitions */
@@ -121,8 +110,8 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        toggleview,     {0} },
-	{ ClkTagBar,            0,              Button3,        view,           {0} },
+	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
