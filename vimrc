@@ -18,6 +18,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'wting/rust.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -28,11 +29,12 @@ colorscheme jellybeans
 filetype plugin indent on
 syntax on
 
+set shortmess+=A                        "disable swap warning
 set encoding=utf-8                      "character encoding.
 set t_Co=256                            "enable 256bits color
 set list                                "display invisible char
-set listchars=eol:¬,tab:→\ ,trail:.     "symbol to display
-hi SpecialKey ctermbg=233 guifg=#649A9A "invisible char color
+set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
+hi SpecialKey ctermbg=234 guifg=#649A9A "invisible char color
 
 set number                              "display line number
 set cursorline                          "highlight current line
@@ -42,11 +44,13 @@ set novisualbell                        "disable annoying screen flashes
 set vb t_vb=                            "disable annoying bell
 set backspace=indent,eol,start          "allow backspace everywhere
 set laststatus=2                        "always display bottom status bar
-set fdm=indent                          "folding method
+set fdm=manual                          "folding method
 
 let &colorcolumn="80"
 highlight ColorColumn ctermbg=234 guibg=#2c2d27
 
+"ctags
+set tags=./.tags;/
 
 "indentations & tabs
 set autoindent                          "keep indentation from the line above
@@ -75,6 +79,8 @@ nnoremap <Leader>l      :set cursorline!<CR>
 nnoremap <Leader>n      :set number!<CR>
 nnoremap <Leader>s      :let @/ = ""<CR>
 nnoremap <Leader>a      ggVG
+nnoremap <Leader>d      :!make<CR>
+nnoremap <Leader>x      :%s/\s\+$//e<CR>
 nnoremap <silent> + :exe "resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winwidth(0) * 2/3)<CR>
 nnoremap <Leader><CR>   i<CR><ESC>
@@ -99,6 +105,9 @@ inoremap kk             <Esc>
 
 " Plugin
 let g:EasyMotion_leader_key = ","
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_auto_trigger = 1
 
 "disable arrowkey
 nnoremap <Up>       <NOP>

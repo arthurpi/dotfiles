@@ -10,3 +10,5 @@
 [user]
 	email = arthur.sfez@gmail.com
 	name = Arthur SFEZ
+[color]
+	ui = auto
