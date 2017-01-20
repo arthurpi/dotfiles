@@ -45,8 +45,13 @@ URxvt*background: Black
 #
 # Xft: Terminus fonts
 #  Fedora/debian packages: terminus-fonts/xfonts-terminus
-URxvt*font: xft:terminus:pixelsize=14
-URxvt*boldFont: xft:terminus:bold:pixelsize=14
+#URxvt*font: xft:Terminus:pixelsize=12
+#URxvt*boldFont: xft:Terminus:bold:pixelsize=12
+URxvt*font: -*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
+URxvt*boldFont: -*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
+#URxvt.font:xft:droid sans mono slashed:medium:pixelsize=14
+#URxvt.boldFont:xft:droid sans mono slashed:medium:pixelsize=14
+#URxvt*letterSpace: -2
 
 # Traditional fonts - a more traditional font setup in lieu of xft
 #URxvt*font:-*-courier-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
