@@ -14,3 +14,5 @@ set show-all-if-ambiguous on
 
 # show vi mode in prompt
 set show-mode-in-prompt on
+set vi-ins-mode-string +
+set vi-cmd-mode-string :

@@ -16,9 +16,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tomtom/tcomment_vim'
+
 Plugin 'majutsushi/tagbar'
-Plugin 'wting/rust.vim'
 Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 
@@ -29,6 +31,7 @@ colorscheme jellybeans
 filetype plugin indent on
 syntax on
 
+set formatoptions+=j                    "remove comment char when J
 set shortmess+=A                        "disable swap warning
 set encoding=utf-8                      "character encoding.
 set t_Co=256                            "enable 256bits color
@@ -36,6 +39,9 @@ set list                                "display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.     "symbol to display
 hi SpecialKey ctermbg=234 guifg=#649A9A "invisible char color
 
+set display=uhex                        "print hex value of non-printable chars
+set scrolloff=8                         "leave at least 10 lines below current
+set autoread                            "watch external file changes
 set number                              "display line number
 set cursorline                          "highlight current line
 set showcmd                             "display cmd info
@@ -55,7 +61,7 @@ set tags=./.tags;/
 "indentations & tabs
 set autoindent                          "keep indentation from the line above
 set smartindent                         "extend indentation (C-like)
-set shiftwidth=4                        "2 spaces indentation
+set shiftwidth=4                        "4 spaces indentation
 set tabstop=4                           "sizeof tabs
 set softtabstop=4                       "sizeof softtabs
 set expandtab                           "replace tab with spaces
@@ -64,6 +70,8 @@ autocmd VimResized * execute "normal \<c-w>="
 "search
 set hlsearch                            "highligh search result
 set incsearch                           "browser-like searches
+set ignorecase                          "case insensitive
+set smartcase                           "(unless there's uppercase char in search)
 set magic                               "for regexp
 set showmatch                           "highlight braces
 
@@ -75,18 +83,31 @@ set wildignore+=.exe,.o,.out,.so,.a
 
 "shortcuts
 let mapleader = ","
+"toggle cursor line
 nnoremap <Leader>l      :set cursorline!<CR>
+"toggle line numbers
 nnoremap <Leader>n      :set number!<CR>
+"clear search results
 nnoremap <Leader>s      :let @/ = ""<CR>
+"select all
 nnoremap <Leader>a      ggVG
+"run make
 nnoremap <Leader>d      :!make<CR>
+"delete trailing spaces/tabs
 nnoremap <Leader>x      :%s/\s\+$//e<CR>
-nnoremap <silent> + :exe "resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <silent> - :exe "resize " . (winwidth(0) * 2/3)<CR>
+"open tagbar, jump to the tagbar split, and resize other splits to be of same size
+nnoremap <Leader>t      :TagbarOpen fj<CR><C-w>=
+nnoremap <silent> +     :exe "resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> -     :exe "resize " . (winwidth(0) * 2/3)<CR>
+"insert new line at cursor position
 nnoremap <Leader><CR>   i<CR><ESC>
+"open ctrlp (file finder)
 nnoremap <Leader>Ctrl-p :CtrlPTag<CR>
+"comment selected block
 map <Leader>c           <C-_><C-_>
+"toggle tagbar and resize other splits to be of same size
 nnoremap <F8>           :TagbarToggle<CR>
+"save current file with root privileges
 cnoremap w!! w !sudo tee % >/dev/null
 nnoremap <C-k>          {
 nnoremap <C-j>          }
@@ -100,6 +121,7 @@ vnoremap <              <gv
 vnoremap >              >gv
 nnoremap ;              :
 vnoremap ;              :
+"exit insert mode with jj or kk strokes
 inoremap jj             <Esc>
 inoremap kk             <Esc>
 
@@ -108,6 +130,8 @@ let g:EasyMotion_leader_key = ","
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_auto_trigger = 1
+let g:tagbar_autoclose = 0
+let g:ctrlp_custom_ignore = { 'file': '\v\.(exe|so|dll|d|o|out)$' }
 
 "disable arrowkey
 nnoremap <Up>       <NOP>
