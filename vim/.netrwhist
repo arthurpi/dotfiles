@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/qrthur'
-let g:netrw_dirhist_2='/home/qrthur/.dotfiles/vim/after/syntax/cpp'
-let g:netrw_dirhist_3='/home/qrthur/.dotfiles/vim/after/syntax/hpp'
-let g:netrw_dirhist_4='/home/qrthur/.dotfiles/vim/after/syntax/cpp'
-let g:netrw_dirhist_5='/home/qrthur/documents/etna/malloc/malloc/mianna_n/src'

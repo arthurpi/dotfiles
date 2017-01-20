@@ -20,6 +20,10 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
 
+export DEVKITPRO=$HOME/opt/devkitpro
+export DEVKITARM=$HOME/opt/devkitpro/devkitARM
+export PATH=$PATH:/opt/devkitpro/devkitARM/bin
+
 source ~/.git-prompt.sh
 
 #export PS1='\[\033[00;31m\]\u\[\033[01;30m\] \$> \[\033[00m\]'

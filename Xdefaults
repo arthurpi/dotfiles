@@ -2,6 +2,20 @@ URxvt*termname: rxvt-unicode
 
 # transparency - true or false (default)
 URxvt*transparent: false
+URxvt*background: #111111
+# Appearance
+URxvt.depth: 32
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+
+# Font
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+
+
 
 # tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
 #   some nice listings are at:
@@ -14,13 +28,10 @@ URxvt*transparent: false
 #URxvt*shading: 40
 
 # scrollback buffer lines - 65535 is max on most machines (64 is default)
-URxvt*saveLines: 12000
+URxvt*saveLines: 1024
 
 # font color (default is black)
 URxvt*foreground: White
-
-# background color (prior to tinting) (default is white)
-URxvt*background: Black
 
 # Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
 #  Fedora/debian packages: libXft/libxft2 
