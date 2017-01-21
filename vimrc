@@ -132,6 +132,10 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_auto_trigger = 1
 let g:tagbar_autoclose = 0
 let g:ctrlp_custom_ignore = { 'file': '\v\.(exe|so|dll|d|o|out)$' }
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 "disable arrowkey
 nnoremap <Up>       <NOP>
