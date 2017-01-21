@@ -2,16 +2,16 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"terminus:size=10"
+	"xos4 Terminus:size=10"
 };
-static const char dmenufont[]       = "terminus:size=10";
+static const char dmenufont[]       = "xos4 Terminus:size=10";
 static const char normbordercolor[] = "#222222";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
 static const char selbordercolor[]  = "#bbbbbb";
 static const char selbgcolor[]      = "#555555";
 static const char selfgcolor[]      = "#eeeeee";
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 15;       /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
