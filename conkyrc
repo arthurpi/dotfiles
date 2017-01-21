@@ -6,5 +6,5 @@ conky.config = {
     use_spacer = 'left',
 };
 conky.text = [[
-[cpu ${cpu cpu0}% @${acpitemp}°C]  [ram $memperc%]  [in ${downspeed wlo1}] [out ${upspeed wlo1}]  > ${time %a %D} ¬ ${time %I:%M}
+cpu [${cpu cpu0}% @${acpitemp}°C]  ram [$memperc%]  in[${downspeed wlo1}]  out[${upspeed wlo1}]  ${time %D} ¬ ${time %I:%M}
 ]];

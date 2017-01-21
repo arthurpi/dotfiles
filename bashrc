@@ -10,11 +10,6 @@ set -o vi
 
 shopt -s checkwinsize
 
-eval $(thefuck --alias)
-#export GEM_HOME=/home/rtur/.gem/ruby/2.3.0/bin/
-export GEM_HOME=$(ruby -e 'print Gem.user_dir')/bin
-export CROSS_GCC=$HOME/devel/shotscope-v2/stm32-devel/gcc-arm-none-eabi/bin
-export PATH=$PATH:$GEM_HOME:$CROSS_GCC:$HOME/bin
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 GIT_PS1_SHOWDIRTYSTATE=1
@@ -22,7 +17,9 @@ GIT_PS1_SHOWCOLORHINTS=1
 
 export DEVKITPRO=$HOME/opt/devkitpro
 export DEVKITARM=$HOME/opt/devkitpro/devkitARM
-export PATH=$PATH:/opt/devkitpro/devkitARM/bin
+
+export PATH=$PATH:$HOME/opt/devkitpro/devkitARM/bin
+export PATH=$PATH:/bin
 
 source ~/.git-prompt.sh
 
