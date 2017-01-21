@@ -18,12 +18,12 @@ GIT_PS1_SHOWCOLORHINTS=1
 export DEVKITPRO=$HOME/opt/devkitpro
 export DEVKITARM=$HOME/opt/devkitpro/devkitARM
 
+export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/opt/devkitpro/devkitARM/bin
-export PATH=$PATH:/bin
 
 source ~/.git-prompt.sh
 
 #export PS1='\[\033[00;31m\]\u\[\033[01;30m\] \$> \[\033[00m\]'
 #export PS1='\[\033[01;30m\]\$> \[\033[00m\]'
 
-PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\][\u]\[\033[00m\]¬\[$(tput bold)\]\[\033[38;5;137m\]\W$(tput sgr0)\] " "\[\033[01;30m\]\$ \[\033[00m\]" "%s "'
+PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\]\u\[\033[00m\]¬\[$(tput bold)\]\[\033[38;5;137m\]\W$(tput sgr0)\] " "\[\033[01;30m\]\$ \[\033[00m\]" "%s "'
