@@ -8,17 +8,17 @@ static const char dmenufont[]       = "xos4 Terminus:size=10";
 static const char normbordercolor[] = "#222222";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#bbbbbb";
-static const char selbgcolor[]      = "#555555";
+static const char selbordercolor[]  = "#666666";
+static const char selbgcolor[]      = "#444444";
 static const char selfgcolor[]      = "#eeeeee";
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 15;       /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* tagging */
-static const char *tags[] = {"www", "irc", "dev", "doc", "etc"};
+static const char *tags[] = {"www", "chat", "term", "doc", "etc", "file", "scratch"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -28,7 +28,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Chromium", NULL,       NULL,       1 << 0,       0,           -1 },
-	//{ "xfe",      NULL,       NULL,       0,            1,           -1 },
+	{ "Xfe",      NULL,       NULL,       1 << 5,       1,           -1 },
+	{ "discord",  NULL,       NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -67,8 +68,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
-	{ MODKEY,                       XK_e,      spawn,          {.v = filecmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = wwwcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -99,6 +98,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+	TAGKEYS(                        XK_q,                      3)
+	TAGKEYS(                        XK_w,                      4)
+	TAGKEYS(                        XK_e,                      5)
+	TAGKEYS(                        XK_s,                      6)
 	{ MODKEY|ShiftMask,             XK_g,      quit,           {0} },
 };
 
