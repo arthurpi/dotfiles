@@ -31,7 +31,7 @@ Xft.hintstyle: hintslight
 URxvt*saveLines: 1024
 
 # font color (default is black)
-URxvt*foreground: White
+URxvt*foreground: #bbbbbb
 
 # Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
 #  Fedora/debian packages: libXft/libxft2 

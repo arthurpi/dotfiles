@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-tile '/home/rtur/pic/wallpaper/dark_wood.png'
+feh --bg-tile $HOME/.dotfiles/wallpaper/dark_wood.png
