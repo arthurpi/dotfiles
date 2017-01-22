@@ -1,2 +1,0 @@
-#!/bin/sh
-feh --bg-tile $HOME/.dotfiles/wallpaper/dark_wood.png

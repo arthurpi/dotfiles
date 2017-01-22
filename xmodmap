@@ -1,4 +1,0 @@
-keycode 64 = Super_L NoSymbol Super_L
-keycode 115 = Alt_L Meta_L Alt_L Meta_L
-remove Lock = Caps_Lock
-keycode 66 = Escape NoSymbol Escape

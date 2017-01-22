@@ -1,0 +1,10 @@
+conky.config = {
+    out_to_console = true,
+    background = false,
+    update_interval = 2,
+    total_run_times = 0,
+    use_spacer = 'left',
+};
+conky.text = [[
+cpu¬[${cpu cpu0}% @${acpitemp}°C]  ram¬[$memperc%]  in¬[${downspeed wlo1}]  out¬[${upspeed wlo1}]  vol¬${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f6}   ${time %D}, ${time %I:%M}
+]];
