@@ -26,5 +26,8 @@ source ~/.git-prompt.sh
 #export PS1='\[\033[00;31m\]\u\[\033[01;30m\] \$> \[\033[00m\]'
 #export PS1='\[\033[01;30m\]\$> \[\033[00m\]'
 
+bold=$(tput bold)
+normal=$(tput sgr0)
+
 # PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\]\u\[\033[00m\]¬\[$(tput bold)\]\[\033[38;5;137m\]\W$(tput sgr0)\] " "\[\033[01;30m\]\$ \[\033[00m\]" "%s "'
-PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\]\u\[\033[00m\]¬\[$(tput bold)\]\W " "\[\033[01;30m\]\$ \[\033[00m\]" "%s "'
+PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\]\u\[\033[00m\]¬\[${bold}\]\W\[${normal}\] " "\[\033[01;30m\]\$ \[\033[00m\]" "(%s) "'
