@@ -8,6 +8,7 @@ URxvt*background: #111111
 URxvt*foreground: #bbbbbb
 
 # Appearance
+URxvt.buffered: false
 URxvt.depth: 32
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
