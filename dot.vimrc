@@ -6,7 +6,7 @@ set nocompatible
 filetype off
 
 "init Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 Plugin 'gmarik/vundle'
 
