@@ -16,10 +16,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tomtom/tcomment_vim'
-
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
-
 Plugin 'wting/rust.vim'
 
 call vundle#end()
