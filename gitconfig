@@ -12,3 +12,5 @@
 	name = Arthur SFEZ
 [color]
 	ui = auto
+[core]
+	excludesfile = /home/rtur/.gitignore

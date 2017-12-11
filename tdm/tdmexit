@@ -30,7 +30,7 @@ setxkbmap -option caps:ctrl_modifier
 xbindkeys -f ~/.xbindkeysrc
 
 # load background image
-feh --bg-tile ~/pic/wallpaper/dark_wood.png &
+feh --bg-tile ~/.dotfiles/wallpaper/dark_wood.png &
 
 # autolock
 xautolock -time 5 -locker slock -corners 0-+0 -cornerdelay 4 -cornerredelay 10 &
