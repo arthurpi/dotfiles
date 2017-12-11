@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# copied from https://github.com/repzret/dotfiles/blob/master/install.sh
+# thanks!
+
+echo "Cloning repos"
+git submodule update --init --recursive
+
 for file in dot.*; do
     name=${file/dot/}
     echo "Installing $name";
