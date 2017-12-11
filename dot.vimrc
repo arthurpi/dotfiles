@@ -16,6 +16,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-scripts/git-file.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'wting/rust.vim'
@@ -95,12 +96,16 @@ nnoremap <Leader>d      :!make<CR>
 nnoremap <Leader>x      :%s/\s\+$//e<CR>
 "open tagbar, jump to the tagbar split, and resize other splits to be of same size
 nnoremap <Leader>t      :TagbarOpen fj<CR><C-w>=
+"refresh ctags file
+nnoremap <Leader>r      :!ctags<CR><CR>
 nnoremap <silent> +     :exe "resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> -     :exe "resize " . (winwidth(0) * 2/3)<CR>
 "insert new line at cursor position
 nnoremap <Leader><CR>   i<CR><ESC>
 "open ctrlp (file finder)
 nnoremap <Leader>Ctrl-p :CtrlPTag<CR>
+"ycm fixit
+nnoremap <Leader>f      :YcmCompleter FixIt<CR>
 "comment selected block
 map <Leader>c           <C-_><C-_>
 "toggle tagbar and resize other splits to be of same size
