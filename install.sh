@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # copied from https://github.com/repzret/dotfiles/blob/master/install.sh
 # thanks!
@@ -21,5 +21,10 @@ then
     cd -
 fi
 
-echo "Installing vim bundles"
-vim +BundleInstall +qall
+read -p "Do you want to install vim bundles now? It will take time! " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo "Installing vim bundles"
+    vim +BundleInstall +qall
+fi

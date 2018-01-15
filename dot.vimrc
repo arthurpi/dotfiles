@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 "plugins
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
@@ -20,6 +20,7 @@ Plugin 'vim-scripts/git-file.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'wting/rust.vim'
+Plugin 'ronakg/quickr-cscope.vim'
 
 call vundle#end()
 
@@ -181,4 +182,35 @@ if (!isdirectory(expand(&backupdir)))
 endif
 if (!isdirectory(expand(&directory)))
     call mkdir(expand(&directory), "p")
+endif
+
+"cscope stuff
+if has('cscope')
+    set cscopetag cscopeverbose csto=0
+    cnoreabbrev csh cs help
+
+    let g:quickr_cscope_keymaps = 0
+    let g:quickr_cscope_db_file = ".cscope.out"
+
+    " 's' symbol: find all references to the token under cursor
+    " 'g' global: find global definition(s) of the token under cursor
+    " 'c' calls:  find all calls to the function name under cursor
+    " 't' text:   find all instances of the text under cursor
+    " 'e' egrep:  egrep search for the word under cursor
+    " 'f' file:   open the filename under cursor
+    " 'i' includes: find files that include the filename under cursor
+    " 'd' called: find functions called by function under cursor
+    nmap <Leader>S <plug>(quickr_cscope_symbols)<Leader>s
+    nmap <Leader>G <plug>(quickr_cscope_global)<Leader>s
+    nmap <Leader>C <plug>(quickr_cscope_callers)<Leader>s
+    nmap <Leader>F <plug>(quickr_cscope_files)<Leader>s
+    nmap <Leader>I <plug>(quickr_cscope_includes)<Leader>s
+    nmap <Leader>T <plug>(quickr_cscope_text)<Leader>s
+    nmap <Leader>E <plug>(quickr_cscope_egrep)<Leader>s
+    nmap <Leader>D <plug>(quickr_cscope_functions)<Leader>s
+
+    nmap <Leader>Z :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > .cscope.files<CR>
+           \:!cscope -b -i .cscope.files -f .cscope.out<CR>
+           \:cs reset<CR>
+
 endif

@@ -8,9 +8,9 @@
     type = cat-file -t
     dump = cat-file -p
 [user]
-	email = arthur.sfez@gmail.com
-	name = Arthur SFEZ
+    email = arthur.sfez@gmail.com
+    name = Arthur SFEZ
 [color]
-	ui = auto
+    ui = auto
 [core]
-	excludesfile = /home/rtur/.gitignore
+    excludesfile = ~/.gitignore

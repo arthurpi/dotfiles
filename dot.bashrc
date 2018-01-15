@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls="ls -hG --color=auto"
+alias ls="ls -hG"
 alias l="ls -l"
 alias la="ls -la"
 alias vi="vim"
@@ -12,10 +12,12 @@ shopt -s checkwinsize
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWCOLORHINTS=1
 
-export PATH=$PATH:$HOME/bin
+export GIT_PS1_SHOWDIRTYSTATE=
+export GIT_PS1_SHOWUNTRACKEDFILES=
+export GIT_PS1_SHOWCOLORHINTS=1
+
+export PATH=$PATH:$HOME/Binary:$HOME/bin
 
 source ~/.git-prompt.sh
 
