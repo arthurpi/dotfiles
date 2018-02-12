@@ -28,3 +28,7 @@ then
     echo "Installing vim bundles"
     vim +BundleInstall +qall
 fi
+
+# list of stuff to pacman/brew
+# cmake doxygen git the_silver_searcher tmux wget
+# macvim for ycm support (link mvim to vim to by-pass the gui)

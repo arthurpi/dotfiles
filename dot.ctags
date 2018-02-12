@@ -6,4 +6,5 @@
 --exclude=.git
 --exclude=.svn
 --exclude=.hg
+--exclude=platforms/pic24
 -f .tags

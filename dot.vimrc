@@ -21,6 +21,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'wting/rust.vim'
 Plugin 'ronakg/quickr-cscope.vim'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
@@ -186,7 +187,8 @@ endif
 
 "cscope stuff
 if has('cscope')
-    set cscopetag cscopeverbose csto=0
+    " set cscopetag
+    set cscopeverbose csto=0
     cnoreabbrev csh cs help
 
     let g:quickr_cscope_keymaps = 0
@@ -209,7 +211,7 @@ if has('cscope')
     nmap <Leader>E <plug>(quickr_cscope_egrep)<Leader>s
     nmap <Leader>D <plug>(quickr_cscope_functions)<Leader>s
 
-    nmap <Leader>Z :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > .cscope.files<CR>
+    nmap <Leader>Z :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -not -path 'pic24/*' > .cscope.files<CR>
            \:!cscope -b -i .cscope.files -f .cscope.out<CR>
            \:cs reset<CR>
 
