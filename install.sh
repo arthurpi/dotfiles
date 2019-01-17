@@ -30,5 +30,5 @@ then
 fi
 
 # list of stuff to pacman/brew
-# cmake doxygen git the_silver_searcher tmux wget
+# cmake doxygen git the_silver_searcher tmux wget picocom tree git bash ctags cscope
 # macvim for ycm support (link mvim to vim to by-pass the gui)

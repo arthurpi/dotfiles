@@ -1,10 +1,10 @@
 set bell-style none
 
-$if mode=vi
-    set keymap vi-insert
-    "jj": vi-movement-mode
-    "kk": vi-movement-mode
-$endif
+# $if mode=vi
+set keymap vi-insert
+"jj": vi-movement-mode
+"kk": vi-movement-mode
+# $endif
 
 # Insensitive case
 set completion-ignore-case on

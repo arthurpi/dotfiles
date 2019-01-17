@@ -208,7 +208,7 @@ if has('cscope')
     nmap <Leader>F <plug>(quickr_cscope_files)<Leader>s
     nmap <Leader>I <plug>(quickr_cscope_includes)<Leader>s
     nmap <Leader>T <plug>(quickr_cscope_text)<Leader>s
-    nmap <Leader>E <plug>(quickr_cscope_egrep)<Leader>s
+    nmap <Leader>E <plug>(quickr_cscope_egrep)
     nmap <Leader>D <plug>(quickr_cscope_functions)<Leader>s
 
     nmap <Leader>Z :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -not -path 'pic24/*' > .cscope.files<CR>

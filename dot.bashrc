@@ -17,7 +17,9 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWCOLORHINTS=1
 
-export PATH=$PATH:$HOME/Binary:$HOME/bin
+export GOPATH=$HOME/go
+
+export PATH=$PATH:$HOME/Binary:$HOME/bin:$GOPATH/bin
 
 source ~/.git-prompt.sh
 
