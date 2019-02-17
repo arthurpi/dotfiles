@@ -1,9 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls="ls -hG"
-alias l="ls -l"
-alias la="ls -la"
+alias ls="ls -hG --color"
+alias l="ls -l --color"
+alias la="ls -la --color"
 alias vi="vim"
 
 set -o vi
