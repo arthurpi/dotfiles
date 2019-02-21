@@ -96,6 +96,9 @@ set wildignore+=.exe,.o,.out,.so,.a
 " shortcuts
 let mapleader = ","
 
+nnoremap <leader>ev :tabe $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 "toggle cursor line
 nnoremap <Leader>l      :set cursorline!<CR>
 
