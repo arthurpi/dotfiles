@@ -1,5 +1,5 @@
 " vim configuration file
-" @author : qrthur
+" @author : arthurpi
 " @version : 0.1
 
 set nocompatible
