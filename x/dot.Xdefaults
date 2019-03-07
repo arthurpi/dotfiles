@@ -24,8 +24,8 @@ Xft.rgba: rgb
 Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintslight
-URxvt*font: xft:xos4 Terminus:pixelsize=14
-URxvt*boldFont: xft:xos4 Terminus:bold:pixelsize=14
+URxvt*font: xft:terminus:pixelsize=14
+URxvt*boldFont: xft:terminus:bold:pixelsize=14
 
 # Replace blue folder colors with a lighter shade for clarity.
 URxvt*color4: RoyalBlue

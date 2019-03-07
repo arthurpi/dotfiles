@@ -1,13 +1,13 @@
-#increase vol
-#for puleaudio
-#   "pamixer --increase 5"
-#for alsa
-"amixer set Master 5%+"
+# Increase volume
+"pactl set-sink-volume 0 +5%"
     XF86AudioRaiseVolume
 
-#decrease vol
-#for puleaudio
-#   "pamixer --decrease 5"
-#for alsa
-"amixer set Master 5%-"
+# Decrease volume
+"pactl set-sink-volume 0 -5%"
     XF86AudioLowerVolume
+
+# If using alsa directly (not recommended)
+#"amixer set Master 5%+"
+#    XF86AudioRaiseVolume
+#"amixer set Master 5%-"
+#    XF86AudioLowerVolume
