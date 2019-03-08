@@ -1,10 +1,24 @@
-# Increase volume
+# Increase output volume
 "pactl set-sink-volume 0 +5%"
     XF86AudioRaiseVolume
 
-# Decrease volume
+# Decrease output volume
 "pactl set-sink-volume 0 -5%"
     XF86AudioLowerVolume
+
+# Toggle output mute
+"pactl set-sink-mute 0 toggle"
+    XF86AudioMute
+
+# Toggle input mute
+"pactl set-source-mute 1 toggle"
+    XF86AudioMicMute
+
+"xbacklight -inc 10"
+    XF86MonBrightnessUp
+
+"xbacklight -dec 10"
+    XF86MonBrightnessDown
 
 # If using alsa directly (not recommended)
 #"amixer set Master 5%+"
