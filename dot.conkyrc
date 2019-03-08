@@ -7,5 +7,5 @@ conky.config = {
 };
 
 conky.text = [[
-vol¬${exec pulsemixer --get-volume | cut -d " " -f1}%  cpu¬[${cpu cpu0}% @${acpitemp}°C]  ram¬[$memperc%]  in¬[${downspeed wlp2s0}]  out¬[${upspeed wlp2s0}]    ${time %D}, ${time %I:%M:%S}
+vol¬[${exec pulsemixer --get-volume | cut -d " " -f1}%]  bat¬[${exec charging-check.sh}${exec acpi -b | grep -o '[0-9]\+%'}]  cpu¬[${cpu cpu0}% @${acpitemp}°C]  ram¬[$memperc%]  in¬[${downspeed wlp2s0}]  out¬[${upspeed wlp2s0}]    ${time %D}, ${time %I:%M:%S}
 ]];
