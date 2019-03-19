@@ -1,17 +1,19 @@
 # Increase output volume
-"pactl set-sink-volume 0 +5%"
+"increase-volume-sinks.sh"
     XF86AudioRaiseVolume
 
 # Decrease output volume
-"pactl set-sink-volume 0 -5%"
+"decrease-volume-sinks.sh"
     XF86AudioLowerVolume
 
 # Toggle output mute
-"pactl set-sink-mute 0 toggle"
+# "pactl set-sink-mute 0 toggle"
+"toggle-mute-sinks.sh"
     XF86AudioMute
 
 # Toggle input mute
-"pactl set-source-mute 1 toggle"
+# "pactl set-source-mute 1 toggle"
+"toggle-mute-sources.sh"
     XF86AudioMicMute
 
 "xbacklight -inc 10"
