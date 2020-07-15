@@ -9,7 +9,7 @@
     dump = cat-file -p
 [user]
     email = arthur.sfez@gmail.com
-    name = Arthur SFEZ
+    name = Arthur Sfez
 [color]
     ui = auto
 [core]

@@ -15,60 +15,25 @@ Plugin 'gmarik/vundle'
 "plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Lokaltog/vim-easymotion'
+
 Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'vim-scripts/git-file.vim'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'wting/rust.vim'
-"Plugin 'ronakg/quickr-cscope.vim'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/git-file.vim'
+Plugin 'ronakg/quickr-cscope.vim'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 " }}}
 
-" google plugins {{{
-Glug youcompleteme-google
-Glug blazedeps auto_filetypes=`['go']`
-Glug piper plugin[mappings]
-Glug critique plugin[mappings]
-Glug blaze plugin[mappings]
-Glug ultisnips-google
-Glug codefmt
-Glug codefmt-google
-Glug corpweb plugin[mappings]
-" }}}
-
-
-" codefmt file settings {{{
-nnoremap <leader>y :Cs <C-R><C-W><CR><CR>
-" }}}
-
-" codefmt file settings {{{
-augroup autoformat_settings
-  autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType jslayout AutoFormatBuffer jslfmt
-  autocmd FileType markdown AutoFormatBuffer mdformat
-  autocmd FileType ncl AutoFormatBuffer nclfmt
-  autocmd FileType python AutoFormatBuffer pyformat
-  autocmd FileType textpb AutoFormatBuffer text-proto-format
-  " autocmd FileType html,css,json AutoFormatBuffer js-beautify
-augroup END
-" }}}
-
-" vimfiles file settings {{{
+" filetype settings {{{
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
+
+autocmd BufNewFile,BufRead *.notes set filetype=notes
 " }}}
 
 " general options
@@ -154,6 +119,9 @@ nnoremap <Leader>s      :let @/ = ""<CR>
 "select all
 nnoremap <Leader>a      ggVG
 
+"search selected text block (visual mode)
+vnoremap <Leader>sb     y/<C-r>"<CR>
+
 "run make
 nnoremap <Leader>d      :!make<CR>
 
@@ -194,16 +162,6 @@ vnoremap <              <gv
 vnoremap >              >gv
 nnoremap ;              :
 vnoremap ;              :
-
-" disable arrowkeys
-noremap <Up>       <NOP>
-inoremap <Up>       <NOP>
-noremap <Down>     <NOP>
-inoremap <Down>     <NOP>
-noremap <Left>     <NOP>
-inoremap <Left>     <NOP>
-noremap <Right>    <NOP>
-inoremap <Right>    <NOP>
 
 " exit insert mode with jj or kk strokes
 inoremap jj             <Esc>
