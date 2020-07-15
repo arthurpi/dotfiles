@@ -24,6 +24,9 @@ Plugin 'vim-scripts/git-file.vim'
 Plugin 'ronakg/quickr-cscope.vim'
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
+
 call vundle#end()
 " }}}
 
