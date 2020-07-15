@@ -14,3 +14,7 @@
     ui = auto
 [core]
     excludesfile = ~/.gitignore
+[http]
+	cookiefile = /usr/local/google/home/asfez/.gitcookies
+[merge]
+	conflictstyle = diff3
