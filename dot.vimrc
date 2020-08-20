@@ -5,24 +5,30 @@
 set nocompatible
 filetype off
 
-source /usr/share/vim/google/google.vim
+" google {{{
+if filereadable("/usr/share/vim/google/google.vim")
+  source /usr/share/vim/google/google.vim
+  Glug critique
+endif
+" }}}
 
-" vundle plugins {{{
+" plugins {{{
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 Plugin 'gmarik/vundle'
 
 "plugins
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'SirVer/ultisnips'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'             " show git branch in status bar
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'        " status bar
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/git-file.vim'       " :e branch:fname (git)
 
-Plugin 'vim-scripts/git-file.vim'
-Plugin 'ronakg/quickr-cscope.vim'
-Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
+Plugin 'neoclide/coc.nvim'              " is youcompleteme has-been now?
+Plugin 'rust-lang/rust.vim'
 
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
@@ -36,13 +42,18 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+" apply the notes filetype
 autocmd BufNewFile,BufRead *.notes set filetype=notes
+
+if $FUCHSIA_DIR != ""
+    source $FUCHSIA_DIR/scripts/vim/fuchsia.vim
+endif
 " }}}
 
-" general options
 filetype plugin indent on
 syntax on
 
+" general options {{{
 set formatoptions+=j                    " remove comment char when J
 set shortmess+=A                        " disable swap warning
 set encoding=utf-8                      " character encoding
@@ -63,6 +74,7 @@ set list                                " display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.     " symbol to display
 set fillchars=fold:\                    " no trailing chars for folded blocks
 let &colorcolumn="81"                   " highlight collumn at 81 chars
+" }}}
 
 " color settings {{{
 colorscheme jellybeans
@@ -77,10 +89,7 @@ highlight ColorColumn ctermbg=234 guibg=#2c2d27
 highlight Folded ctermbg=234
 " }}}
 
-"ctags
-set tags=./.tags;/
-
-" indentations & tabs {{{
+" default indentations & tabs {{{
 set autoindent                          "keep indentation from the line above
 set smartindent                         "extend indentation (C-like)
 set shiftwidth=4                        "4 spaces indentation
@@ -90,108 +99,20 @@ set expandtab                           "replace tab with spaces
 autocmd VimResized * execute "normal \<c-w>="
 " }}}
 
-"search
+" search {{{
 set hlsearch                            "highligh search result
 set incsearch                           "browser-like searches
 set ignorecase                          "case insensitive
 set smartcase                           "(unless there's uppercase char in search)
 set magic                               "for regexp
 set showmatch                           "highlight braces
+" }}}
 
-"auto completion menu
+" auto completion menu {{{
 set wildmenu
 set wildmode=list:longest,full
 set wildignore+=.git,.svn,.hg
 set wildignore+=.exe,.o,.out,.so,.a
-
-" shortcuts
-let mapleader = ","
-
-nnoremap <leader>ev :tabe $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-"toggle cursor line
-nnoremap <Leader>l      :set cursorline!<CR>
-
-"toggle line numbers
-nnoremap <Leader>n      :set number!<CR>
-
-"clear search results
-nnoremap <Leader>s      :let @/ = ""<CR>
-
-"select all
-nnoremap <Leader>a      ggVG
-
-"search selected text block (visual mode)
-vnoremap <Leader>sb     y/<C-r>"<CR>
-
-"run make
-nnoremap <Leader>d      :!make<CR>
-
-"delete trailing spaces/tabs
-nnoremap <Leader>x      :%s/\s\+$//e<CR>
-
-"open tagbar, jump to the tagbar split, and resize other splits to be of same size
-nnoremap <Leader>t      :TagbarOpen fj<CR><C-w>=
-
-"refresh ctags file
-nnoremap <Leader>r      :!ctags<CR><CR>
-nnoremap <silent> +     :exe "resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <silent> -     :exe "resize " . (winwidth(0) * 2/3)<CR>
-
-"open ctrlp (file finder)
-nnoremap <Leader>Ctrl-p :CtrlPTag<CR>
-
-"ycm fixit
-nnoremap <Leader>f      :YcmCompleter FixIt<CR>
-
-"comment selected block
-nnoremap <Leader>c           <C-_><C-_>
-vnoremap <Leader>c           <C-_><C-_>
-
-" save current file with root privileges
-cnoremap w!! w !sudo tee % >/dev/null
-
-" remap existing bindings {{{
-nnoremap <C-k>          {
-nnoremap <C-j>          }
-vnoremap <C-k>          {
-vnoremap <C-j>          }
-nnoremap H              :tabprev<CR>
-nnoremap L              :tabnext<CR>
-vnoremap H              :tabprev<CR>
-vnoremap L              :tabnext<CR>
-vnoremap <              <gv
-vnoremap >              >gv
-nnoremap ;              :
-vnoremap ;              :
-
-" exit insert mode with jj or kk strokes
-inoremap jj             <Esc>
-inoremap kk             <Esc>
-
-" }}}
-
-" easymotion config {{{
-let g:EasyMotion_leader_key = ","
-" }}}
-
-" ycm config {{{
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_auto_trigger = 1
-" }}}
-
-" tagbar config {{{
-let g:tagbar_autoclose = 0
-" }}}
-
-" ctrlp config {{{
-let g:ctrlp_custom_ignore = { 'file': '\v\.(exe|so|dll|d|o|out)$' }
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
 " }}}
 
 " history & backup directories {{{
@@ -220,35 +141,286 @@ if (!isdirectory(expand(&directory)))
 endif
 " }}}
 
-" cscope bindings {{{
-if has('cscope')
-    " set cscopetag
-    set cscopeverbose csto=0
-    cnoreabbrev csh cs help
+" general shortcuts {{{
+let mapleader = ","
 
-    let g:quickr_cscope_keymaps = 0
-    let g:quickr_cscope_db_file = ".cscope.out"
+" edit/source .vimrc
+nnoremap <leader>ev :tabe $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
-    " 's' symbol: find all references to the token under cursor
-    " 'g' global: find global definition(s) of the token under cursor
-    " 'c' calls:  find all calls to the function name under cursor
-    " 't' text:   find all instances of the text under cursor
-    " 'e' egrep:  egrep search for the word under cursor
-    " 'f' file:   open the filename under cursor
-    " 'i' includes: find files that include the filename under cursor
-    " 'd' called: find functions called by function under cursor
-    nmap <Leader>S <plug>(quickr_cscope_symbols)<Leader>s
-    nmap <Leader>G <plug>(quickr_cscope_global)<Leader>s
-    nmap <Leader>C <plug>(quickr_cscope_callers)<Leader>s
-    nmap <Leader>F <plug>(quickr_cscope_files)<Leader>s
-    nmap <Leader>I <plug>(quickr_cscope_includes)<Leader>s
-    nmap <Leader>T <plug>(quickr_cscope_text)<Leader>s
-    nmap <Leader>E <plug>(quickr_cscope_egrep)
-    nmap <Leader>D <plug>(quickr_cscope_functions)<Leader>s
+" toggle cursor line
+nnoremap <Leader>l      :set cursorline!<CR>
+" toggle line numbers
+nnoremap <Leader>n      :set number!<CR>
+" clear search results
+nnoremap <Leader>s      :let @/ = ""<CR>
 
-    nmap <Leader>Z :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' -not -path 'pic24/*' > .cscope.files<CR>
-           \:!cscope -b -i .cscope.files -f .cscope.out<CR>
-           \:cs reset<CR>
+" select all
+nnoremap <Leader>a      ggVG
 
+" search selected text block (visual mode)
+vnoremap <Leader>sb     y/<C-r>"<CR>
+
+" run make
+" TODO: write a function that call the right tool depending on the project
+nnoremap <Leader>d      :!fx build<CR>
+
+" delete trailing spaces/tabs
+nnoremap <Leader>x      :%s/\s\+$//e<CR>
+
+" save current file with root privileges
+cnoremap w!! w !sudo tee % >/dev/null
+
+" }}}
+
+" remap existing bindings {{{
+nnoremap <C-k>          {
+nnoremap <C-j>          }
+vnoremap <C-k>          {
+vnoremap <C-j>          }
+nnoremap H              :tabprev<CR>
+nnoremap L              :tabnext<CR>
+vnoremap H              :tabprev<CR>
+vnoremap L              :tabnext<CR>
+vnoremap <              <gv
+vnoremap >              >gv
+nnoremap ;              :
+vnoremap ;              :
+" exit insert mode with jj strokes
+inoremap jj             <Esc>
+" }}}
+
+" plugin configurations {{{
+" tagbar {{{
+let g:tagbar_autoclose = 0
+" open tagbar, jump to the tagbar split, and resize other splits to be same size
+nnoremap <Leader>t      :TagbarOpen fj<CR><C-w>=
+" makes tagbar be nice with rust code
+let g:rust_use_custom_ctags_defs = 1
+let g:tagbar_type_rust = {
+  \ 'ctagsbin' : '/usr/local/bin/ctags',
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
+
+" }}}
+
+" ctrlp {{{
+let g:ctrlp_custom_ignore = { 'file': '\v\.(exe|so|dll|d|o|out)$' }
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+" }}}
+
+" vim-go {{{
+let g:go_def_mapping_enabled = 0
+" }}}
+
+" tpope/tcomment_vim {{{
+" comment selected block
+nnoremap <Leader>c           <C-_><C-_>
+vnoremap <Leader>c           <C-_><C-_>
+" }}}
+
+" vim.surround config {{{
+" add * around word under cursor (needs vim.surround plugin to work)
+nmap <Leader>b          ysiw*
+" add * around selection (needs vim.surround plug to work)
+vmap <Leader>b          S*
+" }}}
+
+" coc config {{{
+
+" per language config instructions -
+"   for google3 code, see coc-settings.json.
+"   for rust code, :CocInstall coc-rust-analyzer
+"   for gocode, run :GoInstallBinaries (provided by vim-go) then see
+"     coc-settings.json.
+"   TODO: cover C, C++, Python
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD :call CocAction('jumpDefinition', 'tab drop')<CR>:TagbarOpen<CR>
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+" nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" }}}
 " }}}
