@@ -8,9 +8,13 @@
     type = cat-file -t
     dump = cat-file -p
 [user]
-    email = arthur.sfez@gmail.com
+    email = asfez@google.com
     name = Arthur Sfez
 [color]
     ui = auto
 [core]
     excludesfile = ~/.gitignore
+[http]
+	cookiefile = /usr/local/google/home/asfez/.gitcookies
+[merge]
+	conflictstyle = diff3
