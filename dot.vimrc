@@ -6,7 +6,6 @@ filetype off
 " google {{{
 if filereadable("/usr/share/vim/google/google.vim")
   source /usr/share/vim/google/google.vim
-  Glug critique
 endif
 " }}}
 
@@ -16,7 +15,8 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 "plugins
-Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'liuchengxu/vista.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'             " show git branch in status bar
 Plugin 'tpope/vim-surround'
@@ -241,6 +241,7 @@ endif
 
 " vim-go {{{
 let g:go_def_mapping_enabled = 0
+let g:go_fmt_autosave = 0
 " }}}
 
 " tpope/tcomment_vim {{{
@@ -256,14 +257,34 @@ nmap <Leader>b          ysiw*
 vmap <Leader>b          S*
 " }}}
 
+" vim-airline config {{{
+" enable tabline
+let g:airline#extensions#tabline#enabled = 1
+" only show file name in the tab name (as opposed to the full path)
+let g:airline#extensions#tabline#fnamemod = ':t'
+" remove 'X' at the end of the tabline
+let g:airline#extensions#tabline#show_close_button = 0
+" dont show tab numbers on the right
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
+let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
+let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
+let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
+let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+" }}}
+
+" vista config {{{
+let g:vista#renderer#enable_icon = 0
+" }}}
+
 " coc config {{{
 
 " per language config instructions -
-"   for google3 code, see coc-settings.json.
-"   for rust code, :CocInstall coc-rust-analyzer
-"   for gocode, run :GoInstallBinaries (provided by vim-go) then see
-"     coc-settings.json.
-"   TODO: cover C, C++, Python
+"   for rust, :CocInstall coc-rust-analyzer
+"   for c/cpp, config in coc-settings.json (install ccls)
+"   for gocode, run :GoInstallBinaries (vim-go) and config in coc-settings.json.
+"   for g3, see coc-settings.json.cider
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -328,10 +349,11 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD :call CocAction('jumpDefinition', 'tab drop')<CR>:TagbarOpen<CR>
+nmap <silent> gD :call CocAction('jumpDefinition', 'tab drop')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gf :call CocActionAsync('highlight')<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
