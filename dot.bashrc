@@ -43,6 +43,7 @@ fi
 bold=$(tput bold)
 normal=$(tput sgr0)
 
-PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\]\u\[\033[00m\]¬\[${bold}\]\W\[${normal}\] " "\[\033[01;30m\]\$ \[\033[00m\]" "(%s) "'
+# PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\]\u\[\033[00m\]¬\[${bold}\]\W\[${normal}\] " "\[\033[01;30m\]\$ \[\033[00m\]" "(%s) "'
+PS1="\[\033[01;30m\]\u\[\033[00m\]¬\[${bold}\]\W\[${normal}\] \[\033[01;30m\]\$ \[\033[00m\]"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
