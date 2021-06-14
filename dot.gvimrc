@@ -1,6 +1,4 @@
 " gvim configuration file
-" @author : qrthur
-" @version : 0
 
 "gvim options
 set go-=m			"remove menu

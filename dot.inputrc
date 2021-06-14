@@ -10,7 +10,7 @@ set keymap vi-insert
 set completion-ignore-case on
 
 # disable twice key
-set show-all-if-ambiguous on 
+set show-all-if-ambiguous on
 
 # show vi mode in prompt
 set show-mode-in-prompt on

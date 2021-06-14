@@ -1,6 +1,4 @@
 " vim configuration file
-" @author : arthurpi
-" @version : 0.1
 
 set nocompatible
 filetype off
