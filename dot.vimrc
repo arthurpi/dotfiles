@@ -15,17 +15,16 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 "plugins
-Plugin 'airblade/vim-gitgutter'
-Plugin 'liuchengxu/vista.vim'
-Plugin 'tomtom/tcomment_vim'
+Plugin 'airblade/vim-gitgutter'         " show local git diff (+-)
+Plugin 'liuchengxu/vista.vim'           " tagbar like but with lsp support
 Plugin 'tpope/vim-fugitive'             " show git branch in status bar
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'        " status bar
+Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
+Plugin 'vim-scripts/git-file.vim'       " :e git-branch:file-name
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/git-file.vim'       " :e branch:fname (git)
 
+Plugin 'neoclide/coc.nvim'
 Plugin 'fatih/vim-go'
-Plugin 'neoclide/coc.nvim'              " is youcompleteme has-been now?
 Plugin 'rust-lang/rust.vim'
 
 Plugin 'xolox/vim-misc'
