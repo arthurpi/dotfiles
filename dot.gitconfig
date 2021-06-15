@@ -4,9 +4,12 @@
     ci = commit
     st = status -sb
     br = branch
-    hist = log --pretty=format:\"%h %ad %an | %s%d\" --graph --date=short
+    graph = log --oneline --graph --decorate
     type = cat-file -t
     dump = cat-file -p
+[user]
+    email = asfez@google.com
+    name = Arthur Sfez
 [color]
     ui = auto
 [core]
@@ -15,3 +18,7 @@
 	cookiefile = ~/.gitcookies
 [merge]
 	conflictstyle = diff3
+[log]
+    date = relative
+[format]
+    pretty = format:%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(14,trunc)%aN%C(auto,reset) %s%C(auto,red)% gD% D
