@@ -16,10 +16,12 @@ Plugin 'gmarik/vundle'
 
 "plugins
 Plugin 'airblade/vim-gitgutter'         " show local git diff (+-)
-Plugin 'liuchengxu/vista.vim'           " tagbar like but with lsp support
+Plugin 'vim-scripts/git-file.vim'       " :e git-branch:file-name
 Plugin 'tpope/vim-fugitive'             " show git branch in status bar
 Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
-Plugin 'vim-scripts/git-file.vim'       " :e git-branch:file-name
+Plugin 'ggandor/lightspeed.nvim'        " move quickly
+
+Plugin 'liuchengxu/vista.vim'           " tagbar like but with lsp support
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -29,6 +31,8 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 " }}}
@@ -41,10 +45,6 @@ augroup END
 
 " apply the notes filetype
 autocmd BufNewFile,BufRead *.notes set filetype=notes
-
-if $FUCHSIA_DIR != ""
-    source $FUCHSIA_DIR/scripts/vim/fuchsia.vim
-endif
 " }}}
 
 filetype plugin indent on
@@ -56,7 +56,7 @@ set shortmess+=A                        " disable swap warning
 set encoding=utf-8                      " character encoding
 set t_Co=256                            " enable 256bits color
 set display=uhex                        " print hex value of non-printable chars
-set scrolloff=10                        " leave at least 10 lines below current
+set scrolloff=10                        " leave at least 10 lines below cursor
 set autoread                            " watch external file changes
 set number                              " display line number
 set cursorline                          " highlight current line
@@ -70,7 +70,7 @@ set fdm=manual                          " folding method
 set list                                " display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.     " symbol to display
 set fillchars=fold:\                    " no trailing chars for folded blocks
-let &colorcolumn="81"                   " highlight collumn at 81 chars
+let &colorcolumn="81"                   " highlight column at 81 chars
 " }}}
 
 " color settings {{{
@@ -117,25 +117,6 @@ set viminfo=""      "disable viminfo file
 set backup
 set undofile
 set swapfile
-
-if has("win32")
-    set undodir=~\vimfiles\tmp\undo       "merge all backup directory to vimfiles (win)
-    set backupdir=~\vimfiles\tmp\backup   " ^
-    set directory=~\vimfiles\tmp\swap     " ^
-elseif has("unix")
-    set undodir=~/.vim/tmp/undo           "merge all backup directory to .vim (unix)
-    set backupdir=~/.vim/tmp/backup       " ^
-    set directory=~/.vim/tmp/swap         " ^
-endif
-if (!isdirectory(expand(&undodir)))
-    call mkdir(expand(&undodir), "p")
-endif
-if (!isdirectory(expand(&backupdir)))
-    call mkdir(expand(&backupdir), "p")
-endif
-if (!isdirectory(expand(&directory)))
-    call mkdir(expand(&directory), "p")
-endif
 " }}}
 
 " general shortcuts {{{
@@ -188,54 +169,9 @@ inoremap jj             <Esc>
 " }}}
 
 " plugin configurations {{{
-" tagbar {{{
-let g:tagbar_autoclose = 0
-" open tagbar, jump to the tagbar split, and resize other splits to be same size
-nnoremap <Leader>t      :TagbarOpen fj<CR><C-w>=
-" makes tagbar be nice with rust code
-let g:rust_use_custom_ctags_defs = 1
-let g:tagbar_type_rust = {
-  \ 'ctagsbin' : '/usr/local/bin/ctags',
-  \ 'ctagstype' : 'rust',
-  \ 'kinds' : [
-      \ 'n:modules',
-      \ 's:structures:1',
-      \ 'i:interfaces',
-      \ 'c:implementations',
-      \ 'f:functions:1',
-      \ 'g:enumerations:1',
-      \ 't:type aliases:1:0',
-      \ 'v:constants:1:0',
-      \ 'M:macros:1',
-      \ 'm:fields:1:0',
-      \ 'e:enum variants:1:0',
-      \ 'P:methods:1',
-  \ ],
-  \ 'sro': '::',
-  \ 'kind2scope' : {
-      \ 'n': 'module',
-      \ 's': 'struct',
-      \ 'i': 'interface',
-      \ 'c': 'implementation',
-      \ 'f': 'function',
-      \ 'g': 'enum',
-      \ 't': 'typedef',
-      \ 'v': 'variable',
-      \ 'M': 'macro',
-      \ 'm': 'field',
-      \ 'e': 'enumerator',
-      \ 'P': 'method',
-  \ },
-\ }
 
-" }}}
-
-" ctrlp {{{
-let g:ctrlp_custom_ignore = { 'file': '\v\.(exe|so|dll|d|o|out)$' }
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+" gruvbox {{{
+autocmd vimenter * ++nested colorscheme gruvbox
 " }}}
 
 " vim-go {{{
