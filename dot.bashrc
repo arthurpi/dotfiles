@@ -14,7 +14,8 @@ else
   alias la="ls -la --color"
 fi
 
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 
 set -o vi
 shopt -s checkwinsize
