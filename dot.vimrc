@@ -17,6 +17,7 @@ Plugin 'gmarik/vundle'
 "plugins
 Plugin 'airblade/vim-gitgutter'         " show local git diff (+-)
 Plugin 'vim-scripts/git-file.vim'       " :e git-branch:file-name
+Plugin 'tpope/vim-commentary'           " comment stuff
 Plugin 'tpope/vim-fugitive'             " show git branch in status bar
 Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
 Plugin 'ggandor/lightspeed.nvim'        " move quickly
@@ -74,8 +75,6 @@ let &colorcolumn="81"                   " highlight column at 81 chars
 " }}}
 
 " color settings {{{
-colorscheme jellybeans
-
 " override invisible char color
 hi SpecialKey ctermbg=234 guifg=#649A9A
 
@@ -357,7 +356,8 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline^=%{FugitiveStatusline()}
 
 " Mappings for CoCList
 " Show all diagnostics.
