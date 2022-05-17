@@ -7,17 +7,18 @@ function fish_prompt
         set_color --bold red
         printf ':'
       case insert
-        set_color --bold blue
+        set_color --bold green
         printf '+'
       case visual
         set_color --bold magenta
         printf 'v'
     end
     set_color normal
+    printf ' '
   end
 
 
-	set_color $fish_color_cwd
+  set_color -o blue
   printf '%s' (basename (prompt_pwd))
 
   set_color normal
