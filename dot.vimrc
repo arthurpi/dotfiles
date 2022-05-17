@@ -55,6 +55,7 @@ filetype plugin indent on
 syntax on
 
 " general options {{{
+set mouse=a                             " mouse support (in any mode)
 set formatoptions+=j                    " remove comment char when J
 set shortmess+=A                        " disable swap warning
 set encoding=utf-8                      " character encoding
@@ -152,6 +153,10 @@ cnoremap w!! w !sudo tee % >/dev/null
 " }}}
 
 " remap existing bindings {{{
+nnoremap <C-k>          {
+nnoremap <C-j>          }
+vnoremap <C-k>          {
+vnoremap <C-j>          }
 nnoremap H              :tabprev<CR>
 nnoremap L              :tabnext<CR>
 vnoremap H              :tabprev<CR>
@@ -167,7 +172,7 @@ inoremap jj             <Esc>
 " plugin configurations {{{
 
 " gruvbox {{{
-let g:gruvbox_contrast_dark = 'dark'
+let g:gruvbox_contrast_dark = 'medium'
 autocmd vimenter * ++nested colorscheme gruvbox
 " }}}
 
@@ -297,6 +302,14 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Open outline
+nmap <Leader>o  :CocOutline<CR>
+
+autocmd VimEnter,Tabnew *
+            \ if empty(&buftype) | call CocActionAsync('showOutline', 1) | endif
+
+let g:coc_max_treeview_width = 30
 
 augroup mygroup
   autocmd!
