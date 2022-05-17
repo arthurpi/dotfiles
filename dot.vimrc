@@ -74,7 +74,7 @@ set fdm=manual                          " folding method
 set list                                " display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.     " symbol to display
 set fillchars=fold:\                    " no trailing chars for folded blocks
-let &colorcolumn="81"                   " highlight column at 81 chars
+let &colorcolumn="81"                   " by default, highlight 81st column
 " }}}
 
 " color settings {{{
@@ -128,8 +128,6 @@ let mapleader = ","
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" toggle cursor line
-nnoremap <Leader>l      :set cursorline!<CR>
 " toggle line numbers
 nnoremap <Leader>n      :set number!<CR>
 " clear search results
@@ -154,10 +152,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 " }}}
 
 " remap existing bindings {{{
-nnoremap <C-k>          {
-nnoremap <C-j>          }
-vnoremap <C-k>          {
-vnoremap <C-j>          }
 nnoremap H              :tabprev<CR>
 nnoremap L              :tabnext<CR>
 vnoremap H              :tabprev<CR>
@@ -204,10 +198,6 @@ let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
 let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird orange arrow on the tabline
 let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (clear it so nothing is shown)
 let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (clear it so nothing is shown)
-" }}}
-
-" vista config {{{
-let g:vista#renderer#enable_icon = 0
 " }}}
 
 " coc config {{{
