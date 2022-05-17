@@ -17,14 +17,10 @@ function fish_prompt
     printf ' '
   end
 
-
   set_color -o blue
   printf '%s' (basename (prompt_pwd))
 
-  set_color normal
-  printf '%s ' (__fish_git_prompt)
-
   set_color -o yellow
-  printf '$ '
+  printf ' $ '
   set_color normal
 end
