@@ -170,6 +170,7 @@ inoremap jj             <Esc>
 " plugin configurations {{{
 
 " gruvbox {{{
+let g:gruvbox_contrast_dark = 'medium'
 autocmd vimenter * ++nested colorscheme gruvbox
 " }}}
 
@@ -178,16 +179,10 @@ let g:go_def_mapping_enabled = 0
 let g:go_fmt_autosave = 0
 " }}}
 
-" tpope/tcomment_vim {{{
-" comment selected block
-nnoremap <Leader>c           <C-_><C-_>
-vnoremap <Leader>c           <C-_><C-_>
-" }}}
-
 " vim.surround config {{{
-" add * around word under cursor (needs vim.surround plugin to work)
+" add * around word under cursor
 nmap <Leader>b          ysiw*
-" add * around selection (needs vim.surround plug to work)
+" add * around selection
 vmap <Leader>b          S*
 " }}}
 
@@ -203,9 +198,9 @@ let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
 let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
 let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
-let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
-let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
-let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird orange arrow on the tabline
+let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (clear it so nothing is shown)
+let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (clear it so nothing is shown)
 " }}}
 
 " vista config {{{
