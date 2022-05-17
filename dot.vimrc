@@ -172,7 +172,7 @@ inoremap jj             <Esc>
 " plugin configurations {{{
 
 " gruvbox {{{
-let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_dark = 'dark'
 autocmd vimenter * ++nested colorscheme gruvbox
 " }}}
 
