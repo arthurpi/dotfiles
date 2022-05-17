@@ -22,7 +22,6 @@ Plugin 'tpope/vim-fugitive'             " show git branch in status bar
 Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
 Plugin 'ggandor/lightspeed.nvim'        " move quickly
 
-Plugin 'liuchengxu/vista.vim'           " tagbar like but with lsp support
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -34,6 +33,10 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 
 Plugin 'morhetz/gruvbox'
+
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'MunifTanjim/nui.nvim'
+Plugin 'nvim-neo-tree/neo-tree.nvim'
 
 call vundle#end()
 " }}}
@@ -170,7 +173,7 @@ inoremap jj             <Esc>
 " plugin configurations {{{
 
 " gruvbox {{{
-let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_dark = 'dark'
 autocmd vimenter * ++nested colorscheme gruvbox
 " }}}
 
