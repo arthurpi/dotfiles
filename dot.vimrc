@@ -34,10 +34,6 @@ Plugin 'xolox/vim-notes'
 
 Plugin 'morhetz/gruvbox'
 
-Plugin 'nvim-lua/plenary.nvim'
-Plugin 'MunifTanjim/nui.nvim'
-Plugin 'nvim-neo-tree/neo-tree.nvim'
-
 call vundle#end()
 " }}}
 
