@@ -20,8 +20,6 @@ Plugin 'vim-scripts/git-file.vim'       " :e git-branch:file-name
 Plugin 'tpope/vim-commentary'           " comment stuff
 Plugin 'tpope/vim-fugitive'             " show git branch in status bar
 Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
-Plugin 'ggandor/lightspeed.nvim'        " move quickly
-
 
 Plugin 'neoclide/coc.nvim'
 Plugin 'fatih/vim-go'

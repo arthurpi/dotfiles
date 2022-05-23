@@ -21,12 +21,14 @@ return packer.startup(function()
             'kyazdani42/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
-        config = require 'configs/neo-tree',
+        config = require 'configs.neo-tree',
     }
 
     use {
         'akinsho/toggleterm.nvim',
         tag = 'v1.*',
-        config = require 'configs/toggleterm',
+        config = require 'configs.toggleterm',
     }
+
+    use 'ggandor/lightspeed.nvim'
 end)
