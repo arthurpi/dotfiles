@@ -15,4 +15,10 @@ return packer.startup(function()
         },
         config = require 'configs/neo-tree',
     }
+
+    use {
+        'akinsho/toggleterm.nvim',
+        tag = 'v1.*',
+        config = require 'configs/toggleterm',
+    }
 end)
