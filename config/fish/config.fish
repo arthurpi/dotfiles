@@ -1,3 +1,5 @@
+set fish_greeting
+
 if status is-interactive
 
     # note: this erases the default fish_mode_prompt, which adds a vi mode
