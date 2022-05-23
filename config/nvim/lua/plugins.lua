@@ -31,4 +31,9 @@ return packer.startup(function()
     }
 
     use 'ggandor/lightspeed.nvim'
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = require 'configs.gitsigns',
+    }
 end)

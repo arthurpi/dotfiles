@@ -15,10 +15,7 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 "plugins
-Plugin 'airblade/vim-gitgutter'         " show local git diff (+-)
-Plugin 'vim-scripts/git-file.vim'       " :e git-branch:file-name
 Plugin 'tpope/vim-commentary'           " comment stuff
-Plugin 'tpope/vim-fugitive'             " show git branch in status bar
 Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
 
 Plugin 'neoclide/coc.nvim'
