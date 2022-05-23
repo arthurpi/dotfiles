@@ -6,6 +6,14 @@ return packer.startup(function()
     use 'wbthomason/packer.nvim'
 
     use {
+        'feline-nvim/feline.nvim',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+        },
+        config = require 'configs.feline',
+    }
+
+    use {
         'nvim-neo-tree/neo-tree.nvim',
         branch = "v2.x",
         requires = {

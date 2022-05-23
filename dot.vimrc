@@ -22,8 +22,6 @@ Plugin 'tpope/vim-fugitive'             " show git branch in status bar
 Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
 Plugin 'ggandor/lightspeed.nvim'        " move quickly
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'neoclide/coc.nvim'
 Plugin 'fatih/vim-go'
@@ -354,7 +352,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-set statusline^=%{FugitiveStatusline()}
+" set statusline^=%{FugitiveStatusline()}
 
 " Mappings for CoCList
 " Show all diagnostics.
