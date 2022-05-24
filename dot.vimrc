@@ -61,7 +61,6 @@ set vb t_vb=                            " disable annoying bell
 set backspace=indent,eol,start          " allow backspace everywhere
 set laststatus=2                        " always display bottom status bar
 set fdm=manual                          " folding method
-set signcolumn=auto:4                   " enough to show git st and diagnostics
 set list                                " display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.     " symbol to display
 set fillchars=fold:\                    " no trailing chars for folded blocks
