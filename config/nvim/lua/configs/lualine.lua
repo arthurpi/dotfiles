@@ -1,12 +1,17 @@
 local lualine = require 'lualine'
 lualine.setup{
-    options = { theme = 'seoul256' },
+    options = { theme = 'gruvbox' },
     sections = {
         lualine_b = {
             'branch',
             {
                 'diff',
                 colored = false,
+                symbols = {
+                    added = ' ',
+                    modified = ' 柳',
+                    removed = '  ',
+                },
             },
             'diagnostics',
         },
