@@ -119,8 +119,6 @@ let mapleader = ","
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" toggle line numbers
-nnoremap <Leader>n      :set number!<CR>
 " clear search results
 nnoremap <Leader>s      :let @/ = ""<CR>
 
@@ -129,10 +127,6 @@ nnoremap <Leader>a      ggVG
 
 " search selected text block (visual mode)
 vnoremap <Leader>sb     y/<C-r>"<CR>
-
-" run make
-" TODO: write a function that call the right tool depending on the project
-nnoremap <Leader>d      :!fx build<CR>
 
 " delete trailing spaces/tabs
 nnoremap <Leader>x      :%s/\s\+$//e<CR>
