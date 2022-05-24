@@ -17,10 +17,7 @@ end
 function fish_right_prompt
     set -l gray (set_color 555)
     set -l normal (set_color normal)
-
-    echo "$gray"
-    printf '%s ' (__fish_git_prompt)
-    echo "$normal"
+    set -l yellow (set_color yellow)
 
     if [ $CMD_DURATION ]
         set -l duration (_rider_theme_get_duration)
@@ -29,4 +26,8 @@ function fish_right_prompt
     else
         echo $gray"---"
     end
+
+    echo "$yellow"
+    printf '%s ' (__fish_git_prompt)
+    echo "$normal"
 end
