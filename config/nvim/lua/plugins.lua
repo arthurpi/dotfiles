@@ -6,11 +6,8 @@ return packer.startup(function()
     use 'wbthomason/packer.nvim'
 
     use {
-        'feline-nvim/feline.nvim',
-        requires = {
-            'kyazdani42/nvim-web-devicons',
-        },
-        config = require 'configs.feline',
+        'nvim-lualine/lualine.nvim',
+        config = require 'configs.lualine',
     }
 
     use {
