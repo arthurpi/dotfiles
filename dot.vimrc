@@ -61,6 +61,7 @@ set vb t_vb=                            " disable annoying bell
 set backspace=indent,eol,start          " allow backspace everywhere
 set laststatus=2                        " always display bottom status bar
 set fdm=manual                          " folding method
+set signcolumn=auto:4                   " enough to show git st and diagnostics
 set list                                " display invisible char
 set listchars=eol:¬,tab:▸\ ,trail:.     " symbol to display
 set fillchars=fold:\                    " no trailing chars for folded blocks
@@ -209,8 +210,9 @@ set hidden
 set nobackup
 set nowritebackup
 
+
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -218,15 +220,6 @@ set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
