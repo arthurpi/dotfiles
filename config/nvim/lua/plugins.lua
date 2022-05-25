@@ -38,4 +38,9 @@ return packer.startup(function()
         'numToStr/Comment.nvim',
         config = require 'configs.comment',
     }
+
+    use {
+        "folke/which-key.nvim",
+        config = require 'configs.which-key',
+    }
 end)
