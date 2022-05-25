@@ -33,4 +33,9 @@ return packer.startup(function()
         'lewis6991/gitsigns.nvim',
         config = require 'configs.gitsigns',
     }
+
+    use {
+        'numToStr/Comment.nvim',
+        config = require 'configs.comment',
+    }
 end)

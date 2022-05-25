@@ -9,8 +9,8 @@ lualine.setup{
                 colored = false,
                 symbols = {
                     added = ' ',
-                    modified = ' 柳',
-                    removed = '  ',
+                    modified = '柳',
+                    removed = ' ',
                 },
             },
             'diagnostics',
