@@ -43,4 +43,12 @@ return packer.startup(function()
         "folke/which-key.nvim",
         config = require 'configs.which-key',
     }
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = require 'configs.telescope',
+    }
 end)
