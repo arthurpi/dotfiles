@@ -15,9 +15,6 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 "plugins
-Plugin 'tpope/vim-commentary'           " comment stuff
-Plugin 'tpope/vim-surround'             " surroundings ([]()''...) util
-
 Plugin 'neoclide/coc.nvim'
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
