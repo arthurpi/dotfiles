@@ -280,8 +280,8 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Open outline
 nmap <Leader>o  :CocOutline<CR>
 
-autocmd VimEnter,Tabnew *
-            \ if empty(&buftype) | call CocActionAsync('showOutline', 1) | endif
+"autocmd VimEnter,Tabnew *
+            "\ if empty(&buftype) | call CocActionAsync('showOutline', 1) | endif
 
 let g:coc_max_treeview_width = 30
 
