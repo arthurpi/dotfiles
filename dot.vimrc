@@ -25,6 +25,8 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 
+Plugin 'editorconfig/editorconfig-vim'
+
 Plugin 'morhetz/gruvbox'
 
 call vundle#end()
