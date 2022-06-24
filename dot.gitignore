@@ -13,3 +13,6 @@
 .ctags
 cscope.*
 .cscope.*
+
+# clangd
+compile_commands.json
