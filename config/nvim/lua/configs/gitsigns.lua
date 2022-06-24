@@ -17,3 +17,7 @@ end, { desc = 'Next git hunk' })
 vim.keymap.set('n', '<leader>gk', function()
     gitsigns.prev_hunk()
 end, { desc = 'Previous git hunk' })
+
+vim.keymap.set('n', '<leader>gp', function()
+    gitsigns.preview_hunk()
+end, { desc = 'Preview git hunk' })
