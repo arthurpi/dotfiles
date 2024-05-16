@@ -3,22 +3,17 @@
 
 bind Space:magic-space
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Mac OSX
-  alias ls="ls -hG"
-  alias l="ls -l"
-  alias la="ls -la"
-else
-  alias ls="ls -hG --color"
-  alias l="ls -l --color"
-  alias la="ls -la --color"
-fi
+alias ls="ls -hp --color=always"
+alias l="ls -l --color=always"
+alias la="ls -la --color=always"
 
 alias vi="nvim"
 alias vim="nvim"
 
 set -o vi
 shopt -s checkwinsize
+
+export EDITOR=vim
 
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
 
