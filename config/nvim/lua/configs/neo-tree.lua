@@ -39,7 +39,7 @@ require 'neo-tree'.setup{
     },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>:NeoTreeShowToggle<CR>', {
+vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>:Neotree toggle<CR>', {
     noremap = true,
     silent = true,
 })

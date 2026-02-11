@@ -1,6 +1,6 @@
 -- lua/plugins.lua
 return {
--- 1. Gruvbox (Colorscheme)
+    -- 1. Gruvbox (Colorscheme)
     {
         "ellisonleao/gruvbox.nvim",
         priority = 1000, 

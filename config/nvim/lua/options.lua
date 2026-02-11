@@ -22,6 +22,7 @@ opt.list = true                                         -- Display invisible cha
 opt.listchars = { eol = '¬', tab = '▸ ', trail = '.' }  -- Symbol to display
 opt.fillchars = { fold = ' ' }                          -- No trailing chars for folded blocks
 opt.colorcolumn = "81"                                  -- Highlight 81st column
+opt.signcolumn = "auto:4"
 
 -- Indentation
 opt.autoindent = true                                   -- Keep indentation from the line above
