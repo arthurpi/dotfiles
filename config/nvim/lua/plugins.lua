@@ -1,54 +1,86 @@
-local packer = require 'packer'
+-- lua/plugins.lua
+return {
+-- 1. Gruvbox (Colorscheme)
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000, 
+        config = function()
+            require("configs.gruvbox") -- Loads lua/configs/gruvbox.lua
+        end,
+    },
 
-return packer.startup(function()
-    local use = packer.use
+    -- 2. Lualine (Statusline)
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("configs.lualine") -- Loads lua/configs/lualine.lua
+        end,
+    },
 
-    use 'wbthomason/packer.nvim'
+    -- 3. Telescope
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("configs.telescope") -- Loads lua/configs/telescope.lua
+        end,
+    },
 
-    use {
-        'nvim-lualine/lualine.nvim',
-        config = require 'configs.lualine',
-    }
-
-    use {
-        'nvim-neo-tree/neo-tree.nvim',
-        branch = "v2.x",
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'kyazdani42/nvim-web-devicons',
-            'MunifTanjim/nui.nvim',
+    -- 4. Neo-tree
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
         },
-        config = require 'configs.neo-tree',
-    }
+        config = function()
+            require("configs.neo-tree")
+        end,
+    },
 
-    use {
-        'akinsho/toggleterm.nvim',
-        tag = 'v1.*',
-        config = require 'configs.toggleterm',
-    }
+    -- 5. Lualine
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("configs.lualine")
+        end,
+    },
 
-    use 'ggandor/lightspeed.nvim'
+    -- 6. Gitsigns
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("configs.gitsigns")
+        end,
+    },
 
-    use {
-        'lewis6991/gitsigns.nvim',
-        config = require 'configs.gitsigns',
-    }
+    -- 7. ToggleTerm
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*", 
+        config = function()
+            require("configs.toggleterm")
+        end,
+    },
 
-    use {
-        'numToStr/Comment.nvim',
-        config = require 'configs.comment',
-    }
+    -- 8. Comment.nvim
+    {
+        "numToStr/Comment.nvim",
+        config = function()
+            require("configs.comment")
+        end,
+    },
 
-    use {
-        "folke/which-key.nvim",
-        config = require 'configs.which-key',
-    }
-
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim',
-        },
-        config = require 'configs.telescope',
-    }
-end)
+    -- 9. Nvim Treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("configs.treesitter")
+        end,
+    },
+}
