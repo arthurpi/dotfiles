@@ -1,15 +1,12 @@
--- lua/plugins.lua
 return {
-    -- 1. Gruvbox (Colorscheme)
     {
         "ellisonleao/gruvbox.nvim",
-        priority = 1000, 
+        priority = 1000,
         config = function()
             require("configs.gruvbox") -- Loads lua/configs/gruvbox.lua
         end,
     },
 
-    -- 2. Lualine (Statusline)
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -18,7 +15,6 @@ return {
         end,
     },
 
-    -- 3. Telescope
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -27,7 +23,6 @@ return {
         end,
     },
 
-    -- 4. Neo-tree
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -41,7 +36,6 @@ return {
         end,
     },
 
-    -- 5. Lualine
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -50,7 +44,6 @@ return {
         end,
     },
 
-    -- 6. Gitsigns
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -58,16 +51,14 @@ return {
         end,
     },
 
-    -- 7. ToggleTerm
     {
         "akinsho/toggleterm.nvim",
-        version = "*", 
+        version = "*",
         config = function()
             require("configs.toggleterm")
         end,
     },
 
-    -- 8. Comment.nvim
     {
         "numToStr/Comment.nvim",
         config = function()
@@ -75,12 +66,24 @@ return {
         end,
     },
 
-    -- 9. Nvim Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
             require("configs.treesitter")
+        end,
+    },
+
+    {
+        "mason-org/mason-lspconfig.nvim",
+        dependencies = {
+            {
+                "mason-org/mason.nvim", opts = {}
+            },
+            "neovim/nvim-lspconfig",
+        },
+        config = function()
+            require("configs.lsp")
         end,
     },
 }

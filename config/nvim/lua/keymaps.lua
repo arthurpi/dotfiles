@@ -37,3 +37,19 @@ map({'n', 'v'}, ';', ':')
 
 -- Exit insert mode with jj
 map('i', 'jj', '<Esc>')
+
+-- Global LSP Keymaps (only active when LSP attaches to a buffer)
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+
+        map('n', 'gD', vim.lsp.buf.declaration, opts)
+        map('n', 'gd', vim.lsp.buf.definition, opts)
+        map('n', 'gi', vim.lsp.buf.implementation, opts)
+        map('n', 'K', vim.lsp.buf.hover, opts)
+        map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+        map('n', 'gr', vim.lsp.buf.references, opts)
+    end,
+})
